@@ -33,7 +33,4 @@ class LinksController < ApplicationController
     params.require(:link).permit(:target)
   end
 
-
-
-
 end
