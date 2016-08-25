@@ -8,6 +8,7 @@ class LinksController < ApplicationController
     # check if already exists, return existing if need be
     # create and redirect to index with message
     # duplicates = Link.where
+
   end
 
   def update
