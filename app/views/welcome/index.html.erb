@@ -2,3 +2,10 @@
 
 <p>Welcome to our URL Shortening Service!</p>
 
+<%= render "links/form" %>
+
+
+<% if flash[:notice] %>
+  <p>Here's your short link!: <a href="<%= root_path + flash[:notice] %>"><%= root_url %><%= flash[:notice] %></a></p>
+<% end %>
+

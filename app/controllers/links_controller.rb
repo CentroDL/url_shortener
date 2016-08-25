@@ -7,8 +7,16 @@ class LinksController < ApplicationController
   def create
     # check if already exists, return existing if need be
     # create and redirect to index with message
-    # duplicates = Link.where
+    duplicates = Link.where target: link_params[:target]
 
+    link = duplicates.empty? ? Link.create(link_params) : duplicates.first
+
+    redirect_to root_path, notice: encoded_url(link.id)
+  end
+
+  def redirector
+    link = Link.find decoded_id(params[:code])
+    redirect_to link.target, status: 301
   end
 
   def update
@@ -31,7 +39,7 @@ class LinksController < ApplicationController
     digits = []
 
     while id > 0
-      remainder = id % @@BASE
+      remainder = id % BASE
       digits << remainder
       id /= BASE
     end
