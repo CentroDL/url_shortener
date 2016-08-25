@@ -1,11 +1,12 @@
 class LinksController < ApplicationController
 
+  before_action: :duplicate?, only: [:create]
+
   # create
   def new
   end
 
   def create
-
   end
 
   # delete
