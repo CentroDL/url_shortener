@@ -1,6 +1,6 @@
 <%= form_for @link do |f| %>
   <%= f.label :target, "Target URL" %>
-  <%= f.text_field :target %>
+  <%= f.text_field :target, required: true %>
 
   <%= f.submit %>
 <% end %>

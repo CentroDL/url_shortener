@@ -9,3 +9,9 @@
   <p>Here's your short link!: <a href="<%= root_path + flash[:notice] %>"><%= root_url %><%= flash[:notice] %></a></p>
 <% end %>
 
+<% if flash[:error] %>
+  <p>Error: <%= flash[:error] %></p>
+<% end %>
+
+
+
