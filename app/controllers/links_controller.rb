@@ -1,19 +1,13 @@
 class LinksController < ApplicationController
 
   def create
-    if link_params[:target].blank?
-      redirect_to root_path, error: "Please enter a non empty value"
-    else
-      duplicates = Link.where target: link_params[:target]
+    duplicates = Link.where target: link_params[:target]
 
-      link = duplicates.empty? ? Link.create(link_params) : duplicates.first
+    link = duplicates.empty? ? Link.create(link_params) : duplicates.first
 
-      redirect_to root_path, notice: link.encoded_url
-    end
-
+    redirect_to root_path, notice: link.encoded_url
   end
 
-  # TODO(dennis): decide on better location for encoding/decoding functions
   # TODO(dennis): style
   # TODO(dennis): add http:// validation to urls on input
 
