@@ -14,7 +14,7 @@ $(function(){
       alertDiv.addClass("alert-status");
       alertDiv.attr("role", "alert");
       alertDiv.html("<p>URL Field cannot be blank.</p>");
-      $(".container").append(alertDiv);
+      $(".new_link").append(alertDiv);
       linkTarget.val("");
 
     } else {
