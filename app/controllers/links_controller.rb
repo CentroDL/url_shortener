@@ -1,9 +1,5 @@
 class LinksController < ApplicationController
 
-  # create
-  def new
-  end
-
   def create
     # check if already exists, return existing if need be
     # create and redirect to index with message
@@ -13,6 +9,12 @@ class LinksController < ApplicationController
 
     redirect_to root_path, notice: encoded_url(link.id)
   end
+
+  # TODO(dennis): test that duplicates give you correct links
+  # TODO(dennis): increment count
+  # TODO(dennis): decide on better location for encoding/decoding functions
+  # TODO(dennis): top100 view
+  # TODO(dennis): style
 
   def redirector
     link = Link.find decoded_id(params[:code])
