@@ -15,9 +15,12 @@ class LinksController < ApplicationController
   # TODO(dennis): decide on better location for encoding/decoding functions
   # TODO(dennis): top100 view
   # TODO(dennis): style
+  # TODO(dennis): add http:// validation to urls on input
 
   def redirector
     link = Link.find decoded_id(params[:code])
+    link.views += 1
+    link.save
     redirect_to link.target, status: 301
   end
 
@@ -25,6 +28,7 @@ class LinksController < ApplicationController
   end
 
   def top100
+    @top_100_links = Link.limit(100).order('views desc')
   end
 
   private
