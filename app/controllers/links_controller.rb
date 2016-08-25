@@ -18,7 +18,8 @@ class LinksController < ApplicationController
   # TODO(dennis): add http:// validation to urls on input
 
   def redirector
-    link = Link.find decoded_id(params[:code])
+    link = Link.find(decoded_id(params[:code])) or not_found
+
     link.views += 1
     link.save
     redirect_to link.target, status: 301
