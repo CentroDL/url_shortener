@@ -1,5 +1,27 @@
-$(".new_link").submit(function(e){
-  $link_target = $("#link_target").val()
 
-  console.log("Submitted: " + $link_target )
+$(function(){
+
+
+  $(".new_link").submit(function(e){
+    var linkTarget = $("#link_target")
+
+    if( linkTarget.val().replace(/ /g, "" ) === "" ){
+      e.preventDefault();
+      console.log("empty!");
+
+      var alertDiv = $("<div>");
+      alertDiv.addClass("alert");
+      alertDiv.addClass("alert-status");
+      alertDiv.attr("role", "alert");
+      alertDiv.html("<p>URL Field cannot be blank.</p>");
+      $(".container").append(alertDiv);
+      linkTarget.val("");
+
+    } else {
+      console.log( "Submitted: " + linkTarget );
+    }
+
+
+  });
+
 });
