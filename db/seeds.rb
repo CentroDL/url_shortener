@@ -7,4 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 100.times do |i|
-  Faker::Internet.url
+  Link.new target: Faker::Internet.url
+end
