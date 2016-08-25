@@ -15,12 +15,13 @@ class Link < ApplicationRecord
     digits.reverse.map { |num| @@CODEX.key num }.join("")
   end
 
-  def decode_url
+  def self.decode_url(encoded_str)
+    letters = encoded_str.split("").reverse
+    exponents = letters.map { |letter| @@CODEX[letter] }
+    exponents.map.with_index { |value, id| value * (62**id) }.reduce(:+)
   end
 
   def duplicate?
   end
-
-
 
 end
