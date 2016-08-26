@@ -4,6 +4,8 @@ class Link < ApplicationRecord
   # @@BASE is 62 but can be trimmed to 36 if needed
   @@BASE = @@CODEX.length
 
+  before_save :trim
+
   def encoded_url
     id = self.id
     digits = []
@@ -21,6 +23,12 @@ class Link < ApplicationRecord
     letters = encoded_str.split("").reverse
     exponents = letters.map { |letter| @@CODEX[letter] }
     exponents.map.with_index { |value, id| value * (@@BASE**id) }.reduce(:+)
+  end
+
+  private
+
+  def trim
+    self.target.strip!
   end
 
 end

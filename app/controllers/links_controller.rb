@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
 
   def create
-    duplicates = Link.where target: link_params[:target]
+    duplicates = Link.where target: link_params[:target].strip
 
     link = duplicates.empty? ? Link.create(link_params) : duplicates.first
 
