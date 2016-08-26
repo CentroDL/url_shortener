@@ -13,6 +13,10 @@ class LinksController < ApplicationController
 
   end
 
+  def show
+    @link = Link.find Link.decode_id(params[:id])
+  end
+
   def redirector
     id = Link.decode_id params[:code]
     link = Link.find(id) or not_found
