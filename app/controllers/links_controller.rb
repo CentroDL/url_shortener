@@ -8,8 +8,6 @@ class LinksController < ApplicationController
     redirect_to root_path, notice: link.encoded_url
   end
 
-  # TODO(dennis): style
-
   def redirector
     id = Link.decode_id params[:code]
     link = Link.find(id) or not_found
