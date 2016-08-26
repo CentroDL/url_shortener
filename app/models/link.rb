@@ -29,6 +29,7 @@ class Link < ApplicationRecord
 
   def trim
     self.target.strip!
+    self.target.chomp! "/"
   end
 
   def add_protocol
