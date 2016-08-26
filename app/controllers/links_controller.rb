@@ -9,7 +9,6 @@ class LinksController < ApplicationController
   end
 
   # TODO(dennis): style
-  # TODO(dennis): add http:// validation to urls on input
 
   def redirector
     id = Link.decode_id params[:code]

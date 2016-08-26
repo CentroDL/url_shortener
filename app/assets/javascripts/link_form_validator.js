@@ -10,7 +10,7 @@ $(function(){
 
       var alertDiv = $("<div>");
       alertDiv.addClass("alert");
-      alertDiv.addClass("alert-status");
+      alertDiv.addClass("alert-danger");
       alertDiv.attr("role", "alert");
       alertDiv.html("<p>URL Field cannot be blank.</p>");
       $(".new_link").append(alertDiv);
