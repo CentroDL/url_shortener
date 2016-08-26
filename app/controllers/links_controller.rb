@@ -18,7 +18,6 @@ class LinksController < ApplicationController
 
     # for chart
     views_per_day = @link.views_per_day
-    # FIXME: why is this chart so wide?
     @data = {
       labels: views_per_day.keys,
       datasets: [
@@ -39,9 +38,6 @@ class LinksController < ApplicationController
     View.create link: link, ip_address: request.remote_ip
 
     redirect_to link.target, status: 301
-  end
-
-  def update
   end
 
   def top100
