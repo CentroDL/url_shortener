@@ -1,7 +1,12 @@
-<div>
-  <p>Link: <%= link_to "#{root_url}#{link.encoded_url}", link_path(link.encoded_url) %></p>
-  <p>Url: <%= link.target %></p>
-  <p>Views: <%= link.views_count %></p>
-
+<div class="list-group-item">
+  <a href="<%=link_path(link.encoded_url)%>">
+    <h4 class="list-group-item-heading"><%= "#{root_url}#{link.encoded_url}" %></h4>
+  </a>
+  <div>
+    <p class="list-group-item-text"><%= link.target %></p>
+  </div>
+  <div>
+    <p class="btn-sm badge">Views: <%= link.views_count %></p>
+  </div>
 </div>
 

@@ -1,9 +1,16 @@
 
 <%= render @link %>
 
-<% @link.views.each do |view| %>
-  <%= render view %>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">Views</div>
+
+  <table class="table">
+    <% @link.views.each do |view| %>
+      <%= render view %>
+    <% end %>
+  </table>
+
+</div>
 
 
 <%= bar_chart  @data %>

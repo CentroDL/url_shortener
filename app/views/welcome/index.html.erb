@@ -1,17 +1,25 @@
-<h1>Link Shortener</h1>
+<div class="jumbotron">
 
-<p>Welcome to our URL Shortening Service!</p>
+  <div class="page-header">
+    <h1>Link Shortener</h1>
+  </div>
 
-<%= render "links/form" %>
+  <p>Welcome to our URL Shortening Service!</p>
+
+  <%= render "links/form" %>
 
 
-<% if flash[:notice] %>
-  <p>Here's your short link!: <a href="<%= root_path + flash[:notice] %>"><%= root_url %><%= flash[:notice] %></a></p>
-<% end %>
+  <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <p>Here's your short link!: <a href="<%= root_path + flash[:notice] %>"><%= root_url %><%= flash[:notice] %></a></p>
+    </div>
+  <% end %>
 
-<% if flash[:error] %>
-  <p>Error: <%= flash[:error] %></p>
-<% end %>
+  <% if flash[:error] %>
+    <p>Error: <%= flash[:error] %></p>
+  <% end %>
+
+</div>
 
 
 
