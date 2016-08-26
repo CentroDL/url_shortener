@@ -19,7 +19,7 @@ class LinksController < ApplicationController
   end
 
   def top100
-    @top_100_links = Link.limit(100).order('views desc')
+    @top_100_links = Link.top100
   end
 
   private

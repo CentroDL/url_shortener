@@ -27,6 +27,10 @@ class Link < ApplicationRecord
     exponents.map.with_index { |value, id| value * (@@BASE**id) }.reduce(:+)
   end
 
+  def self.top100
+    order("views_count DESC").limit(100)
+  end
+
   private
 
   def trim
