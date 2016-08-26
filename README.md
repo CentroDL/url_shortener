@@ -63,7 +63,7 @@ I am proud that I learned about cache counting during the project. It was fun to
 
 There is some normalization in the urls submitted, like that adding of the `http://` protocol header and trailings slashes, but I dodged the issue of saving variants of the same URL(i.e: www.nytimes.com, nytimes.com) due to constraints in time. I check for duplicates at a minimum but if this were to be an analytics tool one would have to track these differences. If I were to address the problem I'd either expand the `Link` model's ability to detect domains, or create a `Domanin` model altogether, using the ids of both models to generate something like a salted string. The current method needs some salt anyway, at the moment the site is susceptible to "url guessing".
 
-The site and the chart also look terrible at the moment. I am by no means a designer, my apologies to your eyes.
+The site and the chart also look terrible at the moment. I can build mockups but am by no means a designer, my apologies to your eyes.
 
 
 
