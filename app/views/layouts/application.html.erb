@@ -8,16 +8,17 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <!-- <nav class="navbar navbar-default navbar-fixed-top"> -->
-    <div class="container">
-      <li>
-        <ul class=".navbar-text"><a href="/about">About</a></ul>
-        <ul class=".navbar-text"><a href="/top100">Top 100</a></ul>
-      </li>
-    </div>
-  <!-- </nav> -->
-
   <body>
+    <nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
+      <div class="container">
+        <ul class="nav nav-pills">
+          <li role="presentation"><%= link_to "Home", root_path%></li>
+          <li role="presentation"><a href="/about">About</a></li>
+          <li role="presentation"><a href="/top100">Top 100</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <div class="container">
       <%= yield %>
     </div>
