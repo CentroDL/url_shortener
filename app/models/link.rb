@@ -1,12 +1,15 @@
 class Link < ApplicationRecord
 
   has_many :views
+  before_validation :trim, :add_protocol
 
+  validates :target, uniqueness: true
+
+  # maps integer to base 62 string value
   @@CODEX = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").zip((0..61)).to_h
-  # @@BASE is 62 but can be trimmed to 36 if needed
+  # @@BASE is 62 due to the length of the codex but can be trimmed to 36 if needed
   @@BASE = @@CODEX.length
 
-  before_save :trim, :add_protocol
 
   def encoded_url
     id = self.id

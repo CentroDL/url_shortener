@@ -1,9 +1,16 @@
 class LinksController < ApplicationController
 
   def create
-    duplicates = Link.where target: link_params[:target].strip
-    link = duplicates.empty? ? Link.create(link_params) : duplicates.first
-    redirect_to root_path, notice: link.encoded_url
+
+    new_link =  Link.new(link_params)
+
+    if new_link.save
+      redirect_to root_path, notice: new_link.encoded_url
+    else
+      existing_link = Link.find_by target: new_link.target
+      redirect_to root_path, notice: existing_link.encoded_url
+    end
+
   end
 
   def redirector
