@@ -1,5 +1,7 @@
 # Link Shortener
 
+![toon link](https://media.giphy.com/media/10tXRzZ3yObQ1G/giphy.gif)
+
 [A url shortener to shrink your links!](https://toonlinks.herokuapp.com/)
 
 ### Dependencies
