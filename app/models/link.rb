@@ -4,7 +4,7 @@ class Link < ApplicationRecord
   # @@BASE is 62 but can be trimmed to 36 if needed
   @@BASE = @@CODEX.length
 
-  before_save :trim
+  before_save :trim, :add_protocol
 
   def encoded_url
     id = self.id
@@ -29,6 +29,12 @@ class Link < ApplicationRecord
 
   def trim
     self.target.strip!
+  end
+
+  def add_protocol
+    if( !self.target.start_with?("http://", "https://") )
+      self.target = "http://" + self.target
+    end
   end
 
 end
