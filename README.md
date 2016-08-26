@@ -17,7 +17,7 @@ If you have to set Ruby versions refer to your installed version manager:
 |:---:|:---:|
 |`rvm install 2.3.1`<br>`rvm use 2.3.1` |`rbenv install 2.3.1`<br>`rbenv local 2.3.1`|
 
-
+- MySQL needs to be installed and running in the background
 - Clone this repository onto your computer
 - Navigate into the folder in terminal and run:
 
