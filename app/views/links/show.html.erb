@@ -1,1 +1,6 @@
+
 <%= render @link %>
+
+<% @link.views.each do |view| %>
+  <%= render view %>
+<% end %>
