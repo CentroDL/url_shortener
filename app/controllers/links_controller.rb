@@ -18,19 +18,18 @@ class LinksController < ApplicationController
 
     # for chart
     views_per_day = @link.views_per_day
-
+    # FIXME: why is this chart so wide?
     @data = {
       labels: views_per_day.keys,
       datasets: [
         {
             label: "Views By Date",
-            backgroundColor: "rgba(220,220,220,0.2)",
-            borderColor: "rgba(220,220,220,1)",
+            backgroundColor: "rgba(65, 210, 28, 0.2)",
+            borderColor: "rgba(65, 210, 28,1)",
             data: views_per_day.values
         }
       ]
     }
-
   end
 
   def redirector
