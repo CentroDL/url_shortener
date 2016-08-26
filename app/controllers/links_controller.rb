@@ -15,21 +15,29 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find Link.decode_id(params[:id])
+
     # for chart
+    views = @link.views
+    view_dates = views.collect { |view| view.created_at }
+    views_per_day = {}
+
+    view_dates.each do |date|
+      views_per_day[date.strftime("%b %d %Y")] = 0
+    end
+
+    view_dates.each_with_object(views_per_day) do |date|
+      views_per_day[date.strftime("%b %d %Y")] += 1
+    end
+
+
     @data = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: views_per_day.keys,
       datasets: [
         {
-            label: "My First dataset",
+            label: "Views By Date",
             backgroundColor: "rgba(220,220,220,0.2)",
             borderColor: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-            label: "My Second dataset",
-            backgroundColor: "rgba(151,187,205,0.2)",
-            borderColor: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 27, 90]
+            data: views_per_day.values
         }
       ]
     }
