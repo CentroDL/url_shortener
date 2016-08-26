@@ -17,18 +17,7 @@ class LinksController < ApplicationController
     @link = Link.find Link.decode_id(params[:id])
 
     # for chart
-    views = @link.views
-    view_dates = views.collect { |view| view.created_at }
-    views_per_day = {}
-
-    view_dates.each do |date|
-      views_per_day[date.strftime("%b %d %Y")] = 0
-    end
-
-    view_dates.each_with_object(views_per_day) do |date|
-      views_per_day[date.strftime("%b %d %Y")] += 1
-    end
-
+    views_per_day = @link.views_per_day
 
     @data = {
       labels: views_per_day.keys,

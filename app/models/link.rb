@@ -34,6 +34,19 @@ class Link < ApplicationRecord
     order("views_count DESC").limit(100)
   end
 
+  def views_per_day
+    view_dates = self.views.map { |view| view.created_at.strftime("%b %d %Y") }
+    views_per_day = {}
+
+    view_dates.each do |date|
+      views_per_day[date] = 0
+    end
+
+    view_dates.each_with_object(views_per_day) do |date|
+      views_per_day[date] += 1
+    end
+  end
+
   private
 
   def trim
