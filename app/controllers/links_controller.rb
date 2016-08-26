@@ -2,9 +2,7 @@ class LinksController < ApplicationController
 
   def create
     duplicates = Link.where target: link_params[:target].strip
-
     link = duplicates.empty? ? Link.create(link_params) : duplicates.first
-
     redirect_to root_path, notice: link.encoded_url
   end
 
@@ -12,8 +10,8 @@ class LinksController < ApplicationController
     id = Link.decode_id params[:code]
     link = Link.find(id) or not_found
 
-    link.views += 1
-    link.save
+    View.create link: link, ip_address: request.remote_ip
+
     redirect_to link.target, status: 301
   end
 

@@ -1,3 +1,3 @@
 class View < ApplicationRecord
-  belongs_to :link_id
+  belongs_to :link
 end

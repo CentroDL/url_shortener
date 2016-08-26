@@ -1,5 +1,7 @@
 class Link < ApplicationRecord
 
+  has_many :views
+
   @@CODEX = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").zip((0..61)).to_h
   # @@BASE is 62 but can be trimmed to 36 if needed
   @@BASE = @@CODEX.length
